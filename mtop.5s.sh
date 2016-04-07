@@ -5,6 +5,7 @@
 # <bitbar.author>Ganesh V<bitbar.author>
 # <bitbar.author.github>ganeshv<bitbar.author.github>
 # <bitbar.desc>CPU usage bar graph</bitbar.desc>
+# <bitbar.image>https://raw.github.com/ganeshv/mtop/master/screenshots/mtop2.png</bitbar.image>
 
 # CPU utilization bar graph is rendered onto a 25x16 BMP file created from
 # scratch with no external dependencies. The dropdown contains current usage,

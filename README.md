@@ -8,3 +8,6 @@ as reported by `top`.
 ![mtop example](https://raw.github.com/ganeshv/mtop/master/screenshots/mtop1.png)
 
 ![mtop with dropdown](https://raw.github.com/ganeshv/mtop/master/screenshots/mtop2.png)
+
+This `bash` script gets data from `top` and renders the usage graph to a BMP
+file created from scratch, with no external image libraries or dependencies.

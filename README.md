@@ -10,4 +10,14 @@ as reported by `top`.
 ![mtop with dropdown](https://raw.github.com/ganeshv/mtop/master/screenshots/mtop2.png)
 
 This `bash` script gets data from `top` and renders the usage graph to a BMP
-file created from scratch, with no external image libraries or dependencies.
+file created from scratch, with no external image processing utilities or
+dependencies.
+
+## Usage
+
+Install [BitBar](https://getbitbar.com/) and copy `mtop.5s.sh` from this
+repo into the plugins directory you chose when you first ran BitBar.
+
+That's it. You should see the `mtop` graph in your menu bar.
+
+Should work on Mountain Lion through El Capitan.

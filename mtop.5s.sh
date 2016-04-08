@@ -2,10 +2,11 @@
 
 # <bitbar.title>CPU Usage Graph</bitbar.title>
 # <bitbar.version>v1.0</bitbar.version>
-# <bitbar.author>Ganesh V<bitbar.author>
-# <bitbar.author.github>ganeshv<bitbar.author.github>
+# <bitbar.author>Ganesh V</bitbar.author>
+# <bitbar.author.github>ganeshv</bitbar.author.github>
 # <bitbar.desc>CPU usage bar graph</bitbar.desc>
 # <bitbar.image>https://raw.github.com/ganeshv/mtop/master/screenshots/mtop2.png</bitbar.image>
+# <bitbar.about>https://github.com/ganeshv/mtop</bitbar.about>
 
 # CPU utilization bar graph is rendered onto a 25x16 BMP file created from
 # scratch with no external dependencies. The dropdown contains current usage,
@@ -32,7 +33,7 @@ fi
 
 HISTORY_FILE=$HOME/.bitbar.mtop
 [ ! -r "$HISTORY_FILE" ] && touch "$HISTORY_FILE"
-[ X$(find "$HISTORY_FILE" -mtime -2m) != X"$HISTORY_FILE" ] && echo -n >"$HISTORY_FILE" # Discard history if older than 2 minutes
+[ X"$(find "$HISTORY_FILE" -mtime -2m)" != X"$HISTORY_FILE" ] && echo -n >"$HISTORY_FILE" # Discard history if older than 2 minutes
 
 OLDIFS=$IFS
 bmp=()
@@ -42,17 +43,15 @@ height=16
 osver=$(sw_vers -productVersion)
 
 # Colors in BGRA format
-textcol=black
-fgcol="10 10 10 d0"
+fgcol="00 00 00 ff"
 bgcol="00 00 00 00"
 bmp_ver=5
+icontype=templateImage
 
-if [ -n "$BitBarDarkMode" ]; then
-    textcol=white
-    fgcol="ff ff ff d0"
-elif [[ $osver == 10.8.* ]]; then
+if [[ $osver == 10.8.* ]]; then
     bmp_ver=1
     bgcol="d0 d0 d0 7f"
+    icontype=image
 fi
 
 border=$fgcol
@@ -204,16 +203,15 @@ add_row 2 "$border"
 render_graph
 add_row 1 "$border"
 
-echo -n "| image="
+echo -n "| $icontype="
 output_bmp | base64
 echo "---"
-echo "$cpustr | color=$textcol"
-echo "$loadstr | color=$textcol"
+echo "$cpustr | refresh=true"
+echo "$loadstr | refresh=true"
 echo "---"
 top5=("${top5[@]/%/| font=Menlo}")
-top5[0]="${top5[0]} color=$textcol"
 IFS=$'\n'
 echo "${top5[*]}"
 IFS=$OLDIFS
 echo "---"
-echo "Open Activity Monitor | color=blue bash=$0 param1=activity_monitor terminal=false"
+echo "Open Activity Monitor | bash=$0 param1=activity_monitor terminal=false"

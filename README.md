@@ -21,3 +21,17 @@ repo into the plugins directory you chose when you first ran BitBar.
 That's it. You should see the `mtop` graph in your menu bar.
 
 Should work on Mountain Lion through El Capitan.
+
+### Build
+
+    make clean
+    make
+
+
+A plugin script should ideally be a single self-contained file which can
+be dropped into the BitBar plugins directory.
+
+Plugin sources are kept in `src`. Libraries and files included using `.` or
+`source` are expanded inline during `make`. This keeps the plugin source
+clean, while the "compiled" plugin in the base directory is a single
+self-contained file.

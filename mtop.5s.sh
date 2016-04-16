@@ -228,7 +228,7 @@ icontype=templateImage
 
 if [[ $osver == 10.8.* ]]; then
     bmp_ver=1
-    bgcol="d0 d0 d0 7f"
+    bgcol=(d0 d0 d0 7f)
     icontype=image
 fi
 
@@ -292,7 +292,7 @@ curcol=(${bgcol[@]})
 init_bmp $bmp_ver 25 16
 curcol=(${fgcol[@]})
 
-fill 0 0 $width 2                                       # bottom border
+fill 0 0 "$width" 2                                     # bottom border
 line 0 $((height - 1)) $((width - 1)) $((height - 1))   # top border
 
 render_graph

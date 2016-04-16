@@ -1,0 +1,3 @@
+[submodule "bitbash"]
+	path = bitbash
+	url = https://github.com/ganeshv/bitbash.git

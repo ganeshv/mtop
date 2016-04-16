@@ -28,12 +28,16 @@
 # Make your own BMP from scratch, no external dependencies.
 # Useful in BitBar plugins.
 #
-# init_bmp 1 25 16      # initialize BMP, version 1 width 25 height 16
+# pixels=()             # set pixels to empty or with background of same size
+#                       # as will be declared in init_bmp
 # curcol=(bb 66 44 aa)  # set current color, BGRA, hex (%02x)
+# init_bmp 1 25 16      # initialize BMP, version 1 width 25 height 16
+#                       # if pixels not valid, initialize to $curcol
+# curcol=(00 00 00 ff)  # set current color to fully opaque black
 # point $x $y           # set ($x, $y) to $curcol. (0, 0) is bottom left
 # line $x1 $y1 $x2 $y2  # draw horizontal or vertical line
-# rect $x $y $w $h      # draw rectangle
-# fill $x $y $w $h      # draw filled rectangle
+# rect $x $y $w $h      # draw rectangle. ($x, $y) is bottom left
+# fill $x $y $w $h      # draw filled rectangle. ($x, $y) is bottom left
 # output_bmp            # output BMP to stdout
 
 bmp_ver=5               # set to 1 if you want most compatible BMP. no alpha.
@@ -183,7 +187,7 @@ function rect() {
 }
 
 output_bmp() {
-    _bmp=(${bmp_header[@]/#/'\x'})
+    local _bmp=(${bmp_header[@]/#/'\x'})
     _bmp+=(${pixels[@]/#/'\x'})
 
     local IFS=''

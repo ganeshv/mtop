@@ -1,6 +1,6 @@
 DEPS = bitbash/bmplib.sh
 SRCDIR = src
-PLUGINS = mtop.5s.sh
+PLUGINS = mtop.5s.sh mdf.1m.sh
 
 all: $(PLUGINS)
 
